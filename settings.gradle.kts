@@ -27,7 +27,7 @@ pluginManagement {
     }
 }
 
-rootProject.name = "MobileUp Android Template"
+rootProject.name = "MobileUpTestTask2"
 
 include(":app")
 include(":core")
@@ -98,6 +98,10 @@ dependencyResolutionManagement {
                 )
             )
 
+            // Immutable collections
+            val immutableCollections = "0.3.7"
+            library("immutable-collections", "org.jetbrains.kotlinx:kotlinx-collections-immutable:$immutableCollections")
+
             // DI
             val koinVersion = "3.5.0"
             library("koin", "io.insert-koin:koin-core:$koinVersion")
@@ -157,7 +161,7 @@ dependencyResolutionManagement {
 
             // Debug tools
             val chuckerVersion = "4.0.0"
-            val hyperionVersion = "0.9.37"
+            val hyperionVersion = "0.9.38"
             val hyperionAddonsVersion = "0.3.3"
             library("chucker", "com.github.chuckerteam.chucker:library:$chuckerVersion")
             library("hyperion-core", "com.willowtreeapps.hyperion:hyperion-core:$hyperionVersion")

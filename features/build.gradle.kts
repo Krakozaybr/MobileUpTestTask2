@@ -71,6 +71,9 @@ dependencies {
     implementation(libs.bundles.ktor)
     implementation(libs.ktorfit.lib)
 
+    // Immutable collections
+    implementation(libs.immutable.collections)
+
     // Architecture
     implementation(libs.bundles.decompose)
     implementation(libs.bundles.replica)
