@@ -4,4 +4,4 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 @JvmInline
-value class CoinId(val id: String)
+value class CoinId(val value: String)
