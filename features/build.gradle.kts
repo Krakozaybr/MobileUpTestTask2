@@ -74,6 +74,9 @@ dependencies {
     // Immutable collections
     implementation(libs.immutable.collections)
 
+    // Html text
+    implementation(libs.html.text)
+
     // Architecture
     implementation(libs.bundles.decompose)
     implementation(libs.bundles.replica)
