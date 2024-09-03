@@ -13,7 +13,7 @@ interface CoinListComponent {
     val coins: StateFlow<LoadableState<ImmutableList<CoinInfo>>>
     val selectedCurrency: StateFlow<Currency>
 
-    fun onCoinClick(coin: CoinInfo)
+    fun onCoinClick(coinId: CoinId)
 
     fun onCurrencyClick(currency: Currency)
 
