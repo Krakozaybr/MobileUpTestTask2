@@ -1,13 +1,13 @@
 package ru.mobileup.template.features.cryptocurrency.presentation
 
 import com.arkivanov.decompose.router.stack.ChildStack
-import com.arkivanov.decompose.value.Value
+import kotlinx.coroutines.flow.StateFlow
 import ru.mobileup.template.features.cryptocurrency.presentation.details.CoinDetailsComponent
 import ru.mobileup.template.features.cryptocurrency.presentation.list.CoinListComponent
 
 interface CryptocurrencyComponent {
 
-    val stack: Value<ChildStack<*, Child>>
+    val stack: StateFlow<ChildStack<*, Child>>
 
     sealed interface Child {
 
