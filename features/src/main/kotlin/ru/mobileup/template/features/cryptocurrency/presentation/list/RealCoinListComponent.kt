@@ -31,6 +31,15 @@ class RealCoinListComponent(
     private val onOutput: (CoinListComponent.Output) -> Unit
 ) : CoinListComponent, ComponentContext by componentContext {
 
+    companion object {
+
+        private val defaultCurrencies = persistentListOf(
+            Currency("RUB"),
+            Currency("USD"),
+        ).toImmutableList()
+
+    }
+
     private val currenciesReplica = currencyRepository.currenciesReplica
 
     override val currencies = currenciesReplica
@@ -67,12 +76,4 @@ class RealCoinListComponent(
         coinReplica.refresh()
     }
 
-    companion object {
-
-        private val defaultCurrencies = persistentListOf(
-            Currency("RUB"),
-            Currency("USD"),
-        ).toImmutableList()
-
-    }
 }
