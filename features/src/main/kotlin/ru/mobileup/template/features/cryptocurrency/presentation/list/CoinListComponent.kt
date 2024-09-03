@@ -9,7 +9,7 @@ import ru.mobileup.template.features.cryptocurrency.domain.Currency
 
 interface CoinListComponent {
 
-    val currencies: StateFlow<LoadableState<ImmutableList<Currency>>>
+    val currencies: StateFlow<ImmutableList<Currency>>
     val coins: StateFlow<LoadableState<ImmutableList<CoinInfo>>>
     val selectedCurrency: StateFlow<Currency>
 
