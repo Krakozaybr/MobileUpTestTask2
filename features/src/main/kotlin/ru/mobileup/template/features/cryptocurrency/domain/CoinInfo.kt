@@ -1,7 +1,7 @@
 package ru.mobileup.template.features.cryptocurrency.domain
 
 data class CoinInfo(
-    val id: String,
+    val id: CoinId,
     val priceChangePercentage: Float,
     val name: String,
     val imageLink: String,
