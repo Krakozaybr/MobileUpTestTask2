@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -31,28 +32,18 @@ class RealCoinListComponent(
     private val onOutput: (CoinListComponent.Output) -> Unit
 ) : CoinListComponent, ComponentContext by componentContext {
 
-    companion object {
-
-        private val defaultCurrencies = persistentListOf(
-            Currency("RUB"),
-            Currency("USD"),
-        ).toImmutableList()
-
-    }
-
     private val currenciesReplica = currencyRepository.currenciesReplica
 
     override val currencies = currenciesReplica
         .observe(this, errorHandler)
-        .map { it.data }
-        .filterNotNull()
-        .stateIn(
-            initialValue = defaultCurrencies,
-            scope = componentScope,
-            started = SharingStarted.Eagerly
-        )
 
-    override val selectedCurrency = MutableStateFlow(defaultCurrencies.first())
+    override val selectedCurrency: MutableStateFlow<Currency?> = MutableStateFlow(null)
+
+    init {
+        componentScope.launch {
+            selectedCurrency.value = currencies.first().data?.getOrNull(0)
+        }
+    }
 
     private val coinReplica = coinRepository.coinListReplica.withKey(selectedCurrency)
     override val coins = coinReplica.observe(this, errorHandler)
@@ -66,13 +57,12 @@ class RealCoinListComponent(
     }
 
     override fun onRetryClick() {
-        if (currencies.value == defaultCurrencies) {
-            currenciesReplica.refresh()
-        }
+        currenciesReplica.refresh()
         coinReplica.refresh()
     }
 
     override fun onRefresh() {
+        currenciesReplica.refresh()
         coinReplica.refresh()
     }
 
