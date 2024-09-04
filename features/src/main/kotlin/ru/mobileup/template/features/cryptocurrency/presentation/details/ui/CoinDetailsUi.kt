@@ -21,6 +21,7 @@ import ru.mobileup.template.features.R
 import ru.mobileup.template.features.cryptocurrency.domain.CoinDetails
 import ru.mobileup.template.features.cryptocurrency.presentation.details.CoinDetailsComponent
 import ru.mobileup.template.features.cryptocurrency.presentation.shared_ui.error.ErrorBanner
+import ru.mobileup.template.features.cryptocurrency.presentation.shared_ui.lce.CryptoLce
 import ru.mobileup.template.features.cryptocurrency.presentation.shared_ui.loader.Loader
 
 @Composable
@@ -40,13 +41,12 @@ fun CoinDetailsUi(
             onGoBackClick = { dispatchOnBackPressed(context) }
         )
 
-        LceWidget(
+        CryptoLce(
             state = model.details,
             content = { it, _ ->
                 CoinDetailsContent(details = it)
             },
-            onError = { ErrorBanner(component::onRetryClick) },
-            onLoading = { Loader() }
+            onRetryClick = component::onRetryClick
         )
     }
 }

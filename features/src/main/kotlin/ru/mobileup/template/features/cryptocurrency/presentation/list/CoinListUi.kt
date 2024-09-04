@@ -20,13 +20,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import kotlinx.collections.immutable.ImmutableList
 import ru.mobileup.template.core.theme.AppTheme
-import ru.mobileup.template.core.widget.LceWidget
-import ru.mobileup.template.core.widget.PullRefreshLceWidget
 import ru.mobileup.template.features.cryptocurrency.domain.CoinInfo
 import ru.mobileup.template.features.cryptocurrency.presentation.list.ui.CoinItemList
 import ru.mobileup.template.features.cryptocurrency.presentation.list.ui.CoinListToolbar
 import ru.mobileup.template.features.cryptocurrency.presentation.list.ui.CurrencyChipList
 import ru.mobileup.template.features.cryptocurrency.presentation.list.ui.RefreshFailedMessage
+import ru.mobileup.template.features.cryptocurrency.presentation.shared_ui.lce.CryptoPullRefreshLce
 
 
 @Composable
@@ -45,42 +44,37 @@ fun CoinListUi(
         ) {
             val currencyState by component.currencies.collectAsState()
 
-            LceWidget(
-                state = currencyState,
-                content = { currencies, _ ->
-                    Crossfade(
-                        modifier = Modifier
-                            .fillMaxWidth(),
-                        targetState = currencies,
-                        label = "Currency list state crossfade"
-                    ) {
-                        Box(
-                            modifier = Modifier
-                                .height(80.dp)
-                                .fillMaxWidth(),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            CurrencyChipList(
-                                modifier = Modifier.fillMaxWidth(),
-                                selected = selectedCurrency,
-                                onChipClick = component::onCurrencyClick,
-                                currencyList = it
-                            )
-                        }
-                    }
-                },
-                onRetryClick = {},
-                onError = {},
-                onLoading = {}
-            )
+            Crossfade(
+                targetState = currencyState.data,
+                modifier = Modifier
+                    .fillMaxWidth(),
+                label = "Currency list state crossfade",
+            ) {
+                it ?: return@Crossfade
+
+                Box(
+                    modifier = Modifier
+                        .height(80.dp)
+                        .fillMaxWidth(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    CurrencyChipList(
+                        modifier = Modifier.fillMaxWidth(),
+                        selected = selectedCurrency,
+                        onChipClick = component::onCurrencyClick,
+                        currencyList = it
+                    )
+                }
+            }
         }
 
         val coins by component.coins.collectAsState()
 
-        PullRefreshLceWidget(
+        CryptoPullRefreshLce(
             state = coins,
             onRefresh = component::onRefresh,
-            content = { data, refreshing ->
+            onRetryClick = component::onRetryClick,
+            content = { data, _ ->
                 Box {
                     ListContent(
                         showDetails = component::onCoinClick,
@@ -94,7 +88,6 @@ fun CoinListUi(
                     )
                 }
             },
-            onRetryClick = component::onRetryClick,
         )
 
     }
