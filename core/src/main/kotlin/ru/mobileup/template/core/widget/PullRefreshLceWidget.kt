@@ -10,7 +10,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import dev.icerock.moko.resources.compose.localized
 import dev.icerock.moko.resources.desc.StringDesc
 import ru.mobileup.template.core.pull_refresh.PullRefreshIndicator
 import ru.mobileup.template.core.pull_refresh.pullRefresh
