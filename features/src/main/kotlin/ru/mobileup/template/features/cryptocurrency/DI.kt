@@ -4,6 +4,12 @@ import com.arkivanov.decompose.ComponentContext
 import org.koin.core.component.get
 import org.koin.dsl.module
 import ru.mobileup.template.core.ComponentFactory
+import ru.mobileup.template.core.network.NetworkApiFactory
+import ru.mobileup.template.features.cryptocurrency.data.CoinRepository
+import ru.mobileup.template.features.cryptocurrency.data.CoinRepositoryImpl
+import ru.mobileup.template.features.cryptocurrency.data.CryptocurrencyApi
+import ru.mobileup.template.features.cryptocurrency.data.CurrencyRepository
+import ru.mobileup.template.features.cryptocurrency.data.CurrencyRepositoryImpl
 import ru.mobileup.template.features.cryptocurrency.domain.CoinId
 import ru.mobileup.template.features.cryptocurrency.presentation.CryptocurrencyComponent
 import ru.mobileup.template.features.cryptocurrency.presentation.RealCryptocurrencyComponent
@@ -12,7 +18,13 @@ import ru.mobileup.template.features.cryptocurrency.presentation.details.RealCoi
 import ru.mobileup.template.features.cryptocurrency.presentation.list.CoinListComponent
 import ru.mobileup.template.features.cryptocurrency.presentation.list.RealCoinListComponent
 
-val cryptocurrencyModule = module {}
+val cryptocurrencyModule = module {
+    single<CryptocurrencyApi> {
+        get<NetworkApiFactory>().unauthorizedKtorfit.create()
+    }
+    single<CurrencyRepository> { CurrencyRepositoryImpl(get(), get()) }
+    single<CoinRepository> { CoinRepositoryImpl(get(), get()) }
+}
 
 fun ComponentFactory.createCryptocurrencyComponent(
     componentContext: ComponentContext,
