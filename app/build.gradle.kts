@@ -52,12 +52,12 @@ android {
     productFlavors {
         create("dev") {
             dimension = "backend"
-            buildConfigField("String", "BACKEND_URL", "\"https://pokeapi.co/\"")
+            buildConfigField("String", "BACKEND_URL", "\"https://api.coingecko.com/api/v3/\"")
         }
 
         create("prod") {
             dimension = "backend"
-            buildConfigField("String", "BACKEND_URL", "\"https://pokeapi.co/\"")
+            buildConfigField("String", "BACKEND_URL", "\"https://api.coingecko.com/api/v3/\"")
         }
     }
 
