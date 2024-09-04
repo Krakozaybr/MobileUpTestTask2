@@ -3,6 +3,7 @@ package ru.mobileup.template.features.root.presentation
 import com.arkivanov.decompose.router.stack.ChildStack
 import kotlinx.coroutines.flow.StateFlow
 import ru.mobileup.template.core.message.presentation.MessageComponent
+import ru.mobileup.template.features.cryptocurrency.presentation.CryptocurrencyComponent
 import ru.mobileup.template.features.pokemons.presentation.PokemonsComponent
 
 /**
@@ -18,5 +19,6 @@ interface RootComponent {
 
     sealed interface Child {
         class Pokemons(val component: PokemonsComponent) : Child
+        class Cryptocurrency(val component: CryptocurrencyComponent) : Child
     }
 }
