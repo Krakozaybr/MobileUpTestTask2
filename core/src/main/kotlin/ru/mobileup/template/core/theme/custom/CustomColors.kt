@@ -8,7 +8,8 @@ data class CustomColors(
     val background: BackgroundColors,
     val text: TextColors,
     val icon: IconColors,
-    val button: ButtonColors
+    val button: ButtonColors,
+    val cryptocurrencyColors: CryptocurrencyColors
 )
 
 data class BackgroundColors(
@@ -31,6 +32,17 @@ data class IconColors(
 data class ButtonColors(
     val primary: Color,
     val secondary: Color
+)
+
+data class CryptocurrencyColors(
+    val main: Color,
+    val onMain: Color,
+    val mainVariant: Color,
+    val coinHead: Color,
+    val coinSymbol: Color,
+    val coinSuccess: Color,
+    val coinError: Color,
+    val toolbarTitle: Color,
 )
 
 val LocalCustomColors = staticCompositionLocalOf<CustomColors?> { null }

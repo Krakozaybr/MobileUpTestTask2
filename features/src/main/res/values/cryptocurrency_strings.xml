@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cryptocurrency_coin_list">Список криптовалют</string>
+    <string name="cryptocurrency_go_back">Назад</string>
+    <string name="cryptocurrency_error">Ошибка</string>
+    <string name="cryptocurrency_error_text">Произошла какая-то ошибка :(\nПопробуем снова?</string>
+    <string name="cryptocurrency_caps_try">ПОПРОБОВАТЬ</string>
+    <string name="cryptocurrency_price_change_up">+ %s%%</string>
+    <string name="cryptocurrency_price_change_down">- %s%%</string>
+    <string name="cryptocurrency_snackbar_error_text">Произошла ошибка при загрузке</string>
+    <string name="cryptocurrency_description">Описание</string>
+    <string name="cryptocurrency_categories">Категории</string>
+</resources>

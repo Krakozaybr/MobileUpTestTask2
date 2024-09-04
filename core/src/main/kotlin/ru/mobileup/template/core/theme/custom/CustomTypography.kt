@@ -7,7 +7,8 @@ data class CustomTypography(
     val title: TitleTypography,
     val body: BodyTypography,
     val caption: CaptionTypography,
-    val button: ButtonTypography
+    val button: ButtonTypography,
+    val cryptocurrencyTypography: CryptocurrencyTypography
 )
 
 data class TitleTypography(
@@ -15,7 +16,8 @@ data class TitleTypography(
 )
 
 data class BodyTypography(
-    val regular: TextStyle
+    val regular: TextStyle,
+    val medium: TextStyle
 )
 
 data class CaptionTypography(
@@ -24,6 +26,21 @@ data class CaptionTypography(
 
 data class ButtonTypography(
     val bold: TextStyle
+)
+
+data class CoinTypography(
+    val name: TextStyle,
+    val price: TextStyle,
+    val symbol: TextStyle,
+    val priceChange: TextStyle
+)
+
+data class CryptocurrencyTypography(
+    val toolbarTitle: TextStyle,
+    val mediumText: TextStyle,
+    val capsButton: TextStyle,
+    val chip: TextStyle,
+    val coinTypography: CoinTypography
 )
 
 val LocalCustomTypography = staticCompositionLocalOf<CustomTypography?> { null }
