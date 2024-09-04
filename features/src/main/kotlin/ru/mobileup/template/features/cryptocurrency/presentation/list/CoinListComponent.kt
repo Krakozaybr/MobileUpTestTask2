@@ -13,7 +13,7 @@ interface CoinListComponent {
     val coins: StateFlow<LoadableState<ImmutableList<CoinInfo>>>
     val selectedCurrency: StateFlow<Currency?>
 
-    fun onCoinClick(coinId: CoinId)
+    fun onCoinClick(coinInfo: CoinInfo)
 
     fun onCurrencyClick(currency: Currency)
 
@@ -22,7 +22,7 @@ interface CoinListComponent {
     fun onRefresh()
 
     sealed interface Output {
-        data class CoinDetailsRequested(val coinId: CoinId) : Output
+        data class CoinDetailsRequested(val coinInfo: CoinInfo) : Output
     }
 
 }

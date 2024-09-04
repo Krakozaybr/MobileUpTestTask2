@@ -48,8 +48,8 @@ class RealCoinListComponent(
     private val coinReplica = coinRepository.coinListReplica.withKey(selectedCurrency)
     override val coins = coinReplica.observe(this, errorHandler)
 
-    override fun onCoinClick(coinId: CoinId) {
-        onOutput(CoinListComponent.Output.CoinDetailsRequested(coinId))
+    override fun onCoinClick(coinInfo: CoinInfo) {
+        onOutput(CoinListComponent.Output.CoinDetailsRequested(coinInfo))
     }
 
     override fun onCurrencyClick(currency: Currency) {

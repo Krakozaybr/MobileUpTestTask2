@@ -12,9 +12,7 @@ import ru.mobileup.template.features.cryptocurrency.presentation.details.RealCoi
 import ru.mobileup.template.features.cryptocurrency.presentation.list.CoinListComponent
 import ru.mobileup.template.features.cryptocurrency.presentation.list.RealCoinListComponent
 
-val cryptocurrencyModule = module {
-
-}
+val cryptocurrencyModule = module {}
 
 fun ComponentFactory.createCryptocurrencyComponent(
     componentContext: ComponentContext,
@@ -40,11 +38,13 @@ fun ComponentFactory.createCoinListComponent(
 
 fun ComponentFactory.createCoinDetailsComponent(
     coinId: CoinId,
+    title: String,
     componentContext: ComponentContext
 ): CoinDetailsComponent {
     return RealCoinDetailsComponent(
         componentContext = componentContext,
         coinId = coinId,
+        title = title,
         coinRepository = get(),
         errorHandler = get()
     )

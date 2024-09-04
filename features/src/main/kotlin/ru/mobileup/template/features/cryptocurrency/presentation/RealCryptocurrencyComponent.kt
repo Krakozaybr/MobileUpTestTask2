@@ -24,14 +24,13 @@ class RealCryptocurrencyComponent(
 
     private val navigation = StackNavigation<Config>()
 
-    override val stack: StateFlow<ChildStack<*, CryptocurrencyComponent.Child>>
-        = childStack(
-            source = navigation,
-            initialConfiguration = Config.CoinList,
-            serializer = Config.serializer(),
-            handleBackButton = true,
-            childFactory = ::createChild
-        ).toStateFlow(lifecycle)
+    override val stack: StateFlow<ChildStack<*, CryptocurrencyComponent.Child>> = childStack(
+        source = navigation,
+        initialConfiguration = Config.CoinList,
+        serializer = Config.serializer(),
+        handleBackButton = true,
+        childFactory = ::createChild
+    ).toStateFlow(lifecycle)
 
     private fun createChild(
         config: Config,
@@ -41,10 +40,12 @@ class RealCryptocurrencyComponent(
             CryptocurrencyComponent.Child.CoinDetails(
                 componentFactory.createCoinDetailsComponent(
                     coinId = config.id,
-                    componentContext = componentContext
+                    title = config.title,
+                    componentContext = componentContext,
                 )
             )
         }
+
         Config.CoinList -> {
             CryptocurrencyComponent.Child.CoinList(
                 componentFactory.createCoinListComponent(
@@ -59,7 +60,12 @@ class RealCryptocurrencyComponent(
     private fun onCoinListOutput(output: CoinListComponent.Output) {
         when (output) {
             is CoinListComponent.Output.CoinDetailsRequested -> {
-                navigation.pushNew(Config.CoinDetails(output.coinId))
+                navigation.pushNew(
+                    Config.CoinDetails(
+                        id = output.coinInfo.id,
+                        title = output.coinInfo.name
+                    )
+                )
             }
         }
     }
@@ -71,7 +77,7 @@ class RealCryptocurrencyComponent(
         data object CoinList : Config
 
         @Serializable
-        data class CoinDetails(val id: CoinId) : Config
+        data class CoinDetails(val id: CoinId, val title: String) : Config
 
     }
 
