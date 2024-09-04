@@ -51,7 +51,12 @@ class RealCoinListComponent(
 
     init {
         componentScope.launch {
-            selectedCurrency.value = currencies.first().data?.getOrNull(0)
+            selectedCurrency.value = currencies
+                .map {
+                    it.data?.getOrNull(0)
+                }
+                .filterNotNull()
+                .first()
         }
     }
 
