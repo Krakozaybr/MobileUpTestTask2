@@ -3,6 +3,7 @@ package ru.mobileup.template.features.cryptocurrency.presentation.list.ui
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
@@ -33,7 +34,7 @@ fun RefreshFailedMessage(
     val message by component.visibleMessage.collectAsState()
 
     AnimatedVisibility(
-        modifier = modifier,
+        modifier = modifier.clickable(onClick = component::onActionClick),
         visible = message != null
     ) {
         Snackbar(
