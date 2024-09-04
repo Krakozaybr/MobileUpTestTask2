@@ -40,6 +40,7 @@ class CurrencyRepositoryImpl(
 
             list.removeAll(defaults)
 
+            // Defaults should be leading
             return@createReplica (defaults + list).toImmutableList()
         }
 }
