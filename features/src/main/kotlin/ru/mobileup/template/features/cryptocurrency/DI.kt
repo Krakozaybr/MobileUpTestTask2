@@ -29,10 +29,11 @@ fun ComponentFactory.createCoinListComponent(
 ): CoinListComponent {
     return RealCoinListComponent(
         componentContext = componentContext,
+        onOutput = onOutput,
         coinRepository = get(),
         currencyRepository = get(),
         errorHandler = get(),
-        onOutput = onOutput
+        componentFactory = get()
     )
 }
 

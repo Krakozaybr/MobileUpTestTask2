@@ -2,6 +2,7 @@ package ru.mobileup.template.features.cryptocurrency.presentation.list
 
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.coroutines.flow.StateFlow
+import ru.mobileup.template.core.message.presentation.MessageComponent
 import ru.mobileup.template.core.utils.LoadableState
 import ru.mobileup.template.features.cryptocurrency.domain.CoinId
 import ru.mobileup.template.features.cryptocurrency.domain.CoinInfo
@@ -12,6 +13,7 @@ interface CoinListComponent {
     val currencies: StateFlow<LoadableState<ImmutableList<Currency>>>
     val coins: StateFlow<LoadableState<ImmutableList<CoinInfo>>>
     val selectedCurrency: StateFlow<Currency?>
+    val messageComponent: MessageComponent
 
     fun onCoinClick(coinInfo: CoinInfo)
 
