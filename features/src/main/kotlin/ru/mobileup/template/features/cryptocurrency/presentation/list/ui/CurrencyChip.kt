@@ -58,7 +58,7 @@ fun CurrencyChip(
             .padding(paddingValues)
     ) {
         BasicText(
-            text = name,
+            text = name.uppercase(),
             color = { text },
             style = CustomTheme.typography.cryptocurrencyTypography.chip
         )
