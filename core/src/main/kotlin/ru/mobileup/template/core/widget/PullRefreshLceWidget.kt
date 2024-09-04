@@ -10,6 +10,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import dev.icerock.moko.resources.compose.localized
+import dev.icerock.moko.resources.desc.StringDesc
 import ru.mobileup.template.core.pull_refresh.PullRefreshIndicator
 import ru.mobileup.template.core.pull_refresh.pullRefresh
 import ru.mobileup.template.core.pull_refresh.rememberPullRefreshState
@@ -26,14 +28,18 @@ import ru.mobileup.template.core.utils.AbstractLoadableState
 fun <T : Any> PullRefreshLceWidget(
     state: AbstractLoadableState<T>,
     onRefresh: () -> Unit,
-    onRetryClick: () -> Unit,
     modifier: Modifier = Modifier,
+    onRetryClick: (() -> Unit)? = null,
+    onError: (@Composable (StringDesc) -> Unit)? = null,
+    onLoading: (@Composable () -> Unit)? = null,
     content: @Composable (data: T, refreshing: Boolean) -> Unit
 ) {
     LceWidget(
         state = state,
         onRetryClick = onRetryClick,
-        modifier = modifier
+        modifier = modifier,
+        onError = onError,
+        onLoading = onLoading
     ) { data, refreshing ->
         var pullGestureOccurred by remember { mutableStateOf(false) }
 
