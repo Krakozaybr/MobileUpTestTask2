@@ -8,8 +8,10 @@ import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.pushNew
 import com.arkivanov.decompose.value.Value
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.serialization.Serializable
 import ru.mobileup.template.core.ComponentFactory
+import ru.mobileup.template.core.utils.toStateFlow
 import ru.mobileup.template.features.cryptocurrency.createCoinDetailsComponent
 import ru.mobileup.template.features.cryptocurrency.createCoinListComponent
 import ru.mobileup.template.features.cryptocurrency.domain.CoinId
@@ -22,14 +24,14 @@ class RealCryptocurrencyComponent(
 
     private val navigation = StackNavigation<Config>()
 
-    override val stack: Value<ChildStack<*, CryptocurrencyComponent.Child>>
+    override val stack: StateFlow<ChildStack<*, CryptocurrencyComponent.Child>>
         = childStack(
             source = navigation,
             initialConfiguration = Config.CoinList,
             serializer = Config.serializer(),
             handleBackButton = true,
             childFactory = ::createChild
-        )
+        ).toStateFlow(lifecycle)
 
     private fun createChild(
         config: Config,
