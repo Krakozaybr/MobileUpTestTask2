@@ -7,10 +7,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.extensions.compose.jetpack.stack.Children
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import ru.mobileup.template.core.message.presentation.MessageUi
 import ru.mobileup.template.core.theme.AppTheme
 import ru.mobileup.template.core.theme.custom.CustomTheme
 import ru.mobileup.template.core.utils.LocalSystemBarsSettings
@@ -33,12 +31,6 @@ fun RootUi(
             is RootComponent.Child.Cryptocurrency -> CryptocurrencyUi(instance.component)
         }
     }
-
-    MessageUi(
-        component = component.messageComponent,
-        modifier = modifier,
-        bottomPadding = 16.dp
-    )
 }
 
 @Composable

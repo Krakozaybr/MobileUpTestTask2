@@ -1,12 +1,10 @@
 package ru.mobileup.template.features.root.presentation
 
 import com.arkivanov.decompose.ComponentContext
-import com.arkivanov.decompose.childContext
 import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
 import kotlinx.serialization.Serializable
 import ru.mobileup.template.core.ComponentFactory
-import ru.mobileup.template.core.createMessageComponent
 import ru.mobileup.template.core.utils.toStateFlow
 import ru.mobileup.template.features.cryptocurrency.createCryptocurrencyComponent
 import ru.mobileup.template.features.pokemons.createPokemonsComponent
@@ -25,10 +23,6 @@ class RealRootComponent(
         handleBackButton = true,
         childFactory = ::createChild
     ).toStateFlow(lifecycle)
-
-    override val messageComponent = componentFactory.createMessageComponent(
-        childContext(key = "message")
-    )
 
     private fun createChild(
         config: ChildConfig,
