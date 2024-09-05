@@ -1,4 +1,4 @@
-package ru.mobileup.template.features.cryptocurrency.presentation.shared_ui.loader
+package ru.mobileup.template.features.cryptocurrency.presentation.widget.loader
 
 import androidx.compose.animation.core.InfiniteRepeatableSpec
 import androidx.compose.animation.core.animateFloat

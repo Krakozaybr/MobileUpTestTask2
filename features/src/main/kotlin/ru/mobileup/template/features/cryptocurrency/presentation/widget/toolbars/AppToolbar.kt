@@ -1,4 +1,4 @@
-package ru.mobileup.template.features.cryptocurrency.presentation.shared_ui.toolbars
+package ru.mobileup.template.features.cryptocurrency.presentation.widget.toolbars
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import ru.mobileup.template.features.cryptocurrency.presentation.shared_ui.extensions.dropShadowOutOfBounds
+import ru.mobileup.template.features.cryptocurrency.presentation.widget.extensions.dropShadowOutOfBounds
 
 @Composable
 fun AppToolbar(

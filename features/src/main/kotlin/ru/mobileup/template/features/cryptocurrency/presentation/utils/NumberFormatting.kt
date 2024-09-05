@@ -1,4 +1,4 @@
-package ru.mobileup.template.features.cryptocurrency.presentation.shared_ui.utils
+package ru.mobileup.template.features.cryptocurrency.presentation.utils
 
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols

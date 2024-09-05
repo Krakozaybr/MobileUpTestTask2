@@ -25,7 +25,7 @@ import ru.mobileup.template.features.cryptocurrency.presentation.list.ui.CoinIte
 import ru.mobileup.template.features.cryptocurrency.presentation.list.ui.CoinListToolbar
 import ru.mobileup.template.features.cryptocurrency.presentation.list.ui.CurrencyChipList
 import ru.mobileup.template.features.cryptocurrency.presentation.list.ui.RefreshFailedMessage
-import ru.mobileup.template.features.cryptocurrency.presentation.shared_ui.lce.CryptoPullRefreshLce
+import ru.mobileup.template.features.cryptocurrency.presentation.widget.lce.CryptoPullRefreshLce
 
 @Composable
 fun CoinListUi(

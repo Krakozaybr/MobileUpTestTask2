@@ -19,7 +19,7 @@ import ru.mobileup.template.core.utils.dispatchOnBackPressed
 import ru.mobileup.template.features.R
 import ru.mobileup.template.features.cryptocurrency.domain.CoinDetails
 import ru.mobileup.template.features.cryptocurrency.presentation.details.CoinDetailsComponent
-import ru.mobileup.template.features.cryptocurrency.presentation.shared_ui.lce.CryptoLce
+import ru.mobileup.template.features.cryptocurrency.presentation.widget.lce.CryptoLce
 
 @Composable
 fun CoinDetailsUi(

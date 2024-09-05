@@ -1,4 +1,4 @@
-package ru.mobileup.template.features.cryptocurrency.presentation.shared_ui.error
+package ru.mobileup.template.features.cryptocurrency.presentation.widget.error
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

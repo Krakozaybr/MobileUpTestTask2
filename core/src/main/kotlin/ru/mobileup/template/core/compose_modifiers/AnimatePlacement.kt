@@ -1,4 +1,4 @@
-package ru.mobileup.template.features.cryptocurrency.presentation.shared_ui.utils
+package ru.mobileup.template.core.compose_modifiers
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.AnimationVector2D

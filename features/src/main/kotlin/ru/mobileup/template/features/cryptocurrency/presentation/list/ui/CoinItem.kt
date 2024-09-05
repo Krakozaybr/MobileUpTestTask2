@@ -20,8 +20,8 @@ import ru.mobileup.template.core.theme.custom.CustomTheme
 import ru.mobileup.template.features.R
 import ru.mobileup.template.features.cryptocurrency.domain.CoinInfo
 import ru.mobileup.template.features.cryptocurrency.domain.Currency
-import ru.mobileup.template.features.cryptocurrency.presentation.shared_ui.utils.englishFormat
-import ru.mobileup.template.features.cryptocurrency.presentation.shared_ui.utils.symbol
+import ru.mobileup.template.features.cryptocurrency.presentation.utils.englishFormat
+import ru.mobileup.template.features.cryptocurrency.presentation.utils.symbol
 import kotlin.math.absoluteValue
 
 @Composable

@@ -1,4 +1,4 @@
-package ru.mobileup.template.features.cryptocurrency.presentation.shared_ui.extensions
+package ru.mobileup.template.features.cryptocurrency.presentation.widget.extensions
 
 import android.graphics.BlurMaskFilter
 import androidx.compose.ui.Modifier

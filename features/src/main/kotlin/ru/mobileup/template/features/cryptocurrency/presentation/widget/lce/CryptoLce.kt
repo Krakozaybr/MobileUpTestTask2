@@ -1,4 +1,4 @@
-package ru.mobileup.template.features.cryptocurrency.presentation.shared_ui.lce
+package ru.mobileup.template.features.cryptocurrency.presentation.widget.lce
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -6,22 +6,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import ru.mobileup.template.core.utils.AbstractLoadableState
-import ru.mobileup.template.core.widget.PullRefreshLceWidget
-import ru.mobileup.template.features.cryptocurrency.presentation.shared_ui.error.ErrorBanner
-import ru.mobileup.template.features.cryptocurrency.presentation.shared_ui.loader.Loader
+import ru.mobileup.template.core.widget.LceWidget
+import ru.mobileup.template.features.cryptocurrency.presentation.widget.error.ErrorBanner
+import ru.mobileup.template.features.cryptocurrency.presentation.widget.loader.Loader
 
 @Composable
-fun <T : Any> CryptoPullRefreshLce(
+fun <T : Any> CryptoLce(
     state: AbstractLoadableState<T>,
     modifier: Modifier = Modifier,
     onRetryClick: () -> Unit,
-    onRefresh: () -> Unit,
     content: @Composable (data: T, refreshing: Boolean) -> Unit
 ) {
-    PullRefreshLceWidget(
-        modifier = modifier,
+    LceWidget(
         state = state,
         content = content,
+        modifier = modifier,
         onError = {
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                 ErrorBanner(onRetryClick = onRetryClick)
@@ -31,7 +30,6 @@ fun <T : Any> CryptoPullRefreshLce(
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                 Loader()
             }
-        },
-        onRefresh = onRefresh
+        }
     )
 }
