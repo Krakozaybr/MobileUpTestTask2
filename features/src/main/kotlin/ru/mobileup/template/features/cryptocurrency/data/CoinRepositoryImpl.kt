@@ -5,6 +5,7 @@ import kotlinx.collections.immutable.toImmutableList
 import me.aartikov.replica.client.ReplicaClient
 import me.aartikov.replica.keyed.KeyedReplica
 import me.aartikov.replica.single.ReplicaSettings
+import ru.mobileup.template.features.cryptocurrency.data.dto.CoinDetailsResponse.Companion.toDomain
 import ru.mobileup.template.features.cryptocurrency.domain.CoinDetails
 import ru.mobileup.template.features.cryptocurrency.domain.CoinId
 import ru.mobileup.template.features.cryptocurrency.domain.CoinInfo
@@ -45,6 +46,6 @@ class CoinRepositoryImpl(
                 )
             }
         ) { id ->
-            api.getDetails(id.value).map()
+            api.getDetails(id.value).toDomain()
         }
 }

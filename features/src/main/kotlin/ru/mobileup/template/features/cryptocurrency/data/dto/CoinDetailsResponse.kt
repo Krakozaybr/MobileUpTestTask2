@@ -11,39 +11,31 @@ import java.util.Locale
 
 @Serializable
 data class CoinDetailsResponse(
-    @SerialName("id")
-    val id: String,
-    @SerialName("image")
-    val imageLink: ImageHolder,
-    @SerialName("description")
-    val description: JsonObject,
-    @SerialName("categories")
-    val categories: List<String>
+    @SerialName("id") val id: String,
+    @SerialName("image") val imageLink: ImageHolder,
+    @SerialName("description") val description: JsonObject,
+    @SerialName("categories") val categories: List<String>
 ) {
-    fun map() = CoinDetails(
-        id = CoinId(id),
-        imageLink = imageLink.large,
-        description = description(Locale.getDefault().language)
-            ?: description("en")
-            ?: "",
-        categories = categories.toImmutableList()
-    )
+    companion object {
+        fun CoinDetailsResponse.toDomain() = CoinDetails(
+            id = CoinId(id),
+            imageLink = imageLink.large,
+            description = description.parse(Locale.getDefault().language) ?: description.parse("en"),
+            categories = categories.toImmutableList()
+        )
 
-    private fun description(locale: String): String? {
-        return description[locale]
-            ?.jsonPrimitive
-            ?.takeIf { it.isString }
-            ?.content
-            ?.takeIf { it.isNotEmpty() && it.isNotBlank() }
+        private fun JsonObject.parse(locale: String): String? {
+            return get(locale)?.jsonPrimitive
+                ?.takeIf { it.isString }
+                ?.content
+                ?.takeIf { it.isNotEmpty() && it.isNotBlank() }
+        }
     }
 }
 
 @Serializable
 data class ImageHolder(
-    @SerialName("thumb")
-    val thumb: String,
-    @SerialName("small")
-    val small: String,
-    @SerialName("large")
-    val large: String
+    @SerialName("thumb") val thumb: String,
+    @SerialName("small") val small: String,
+    @SerialName("large") val large: String
 )
