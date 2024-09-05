@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
-import me.aartikov.replica.algebra.normal.withKey
+import me.aartikov.replica.algebra.paged.withKey
 import ru.mobileup.template.core.ComponentFactory
 import ru.mobileup.template.core.createMessageComponent
 import ru.mobileup.template.core.error_handling.ErrorHandler
@@ -72,5 +72,9 @@ class RealCoinListComponent(
     override fun onRefresh() {
         currenciesReplica.refresh()
         coinReplica.refresh()
+    }
+
+    override fun onLoadNext() {
+        coinReplica.loadNext()
     }
 }
