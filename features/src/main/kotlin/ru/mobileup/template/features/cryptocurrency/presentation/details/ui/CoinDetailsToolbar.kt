@@ -12,10 +12,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import ru.mobileup.template.features.cryptocurrency.presentation.widget.toolbars.ToolbarText
 import ru.mobileup.template.core.theme.AppTheme
+import ru.mobileup.template.core.widget.BackButton
 import ru.mobileup.template.features.cryptocurrency.presentation.widget.toolbars.AppToolbar
-import ru.mobileup.template.features.cryptocurrency.presentation.widget.toolbars.GoBackToolbarIcon
+import ru.mobileup.template.features.cryptocurrency.presentation.widget.toolbars.ToolbarText
 
 @Composable
 fun CoinDetailsToolbar(
@@ -33,7 +33,7 @@ fun CoinDetailsToolbar(
             horizontalArrangement = Arrangement.spacedBy(spacing),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            GoBackToolbarIcon(onClick = onGoBackClick)
+            BackButton(onClick = onGoBackClick)
             ToolbarText(text = title)
         }
     }

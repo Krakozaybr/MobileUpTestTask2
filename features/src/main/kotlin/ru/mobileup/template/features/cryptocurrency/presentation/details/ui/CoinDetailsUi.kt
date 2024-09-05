@@ -67,10 +67,15 @@ private fun CoinDetailsContent(
                 modifier = Modifier.fillMaxWidth(0.4f)
             )
         }
-        R.string.pokemons_types
-        CoinDetailsSubtitle(title = stringResource(id = R.string.cryptocurrency_description))
-        CoinDetailsText(text = details.description)
-        CoinDetailsSubtitle(title = stringResource(id = R.string.cryptocurrency_categories))
-        CoinDetailsText(text = details.categories.joinToString(", "))
+        details.description?.let {
+            CoinDetailsTextBlock(
+                title = stringResource(id = R.string.cryptocurrency_description),
+                text = it
+            )
+        }
+        CoinDetailsTextBlock(
+            title = stringResource(id = R.string.cryptocurrency_categories),
+            text = details.categories.joinToString(", ")
+        )
     }
 }
