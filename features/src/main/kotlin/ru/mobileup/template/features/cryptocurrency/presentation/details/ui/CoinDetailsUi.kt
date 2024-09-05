@@ -16,13 +16,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import ru.mobileup.template.core.utils.dispatchOnBackPressed
-import ru.mobileup.template.core.widget.LceWidget
 import ru.mobileup.template.features.R
 import ru.mobileup.template.features.cryptocurrency.domain.CoinDetails
 import ru.mobileup.template.features.cryptocurrency.presentation.details.CoinDetailsComponent
-import ru.mobileup.template.features.cryptocurrency.presentation.shared_ui.error.ErrorBanner
 import ru.mobileup.template.features.cryptocurrency.presentation.shared_ui.lce.CryptoLce
-import ru.mobileup.template.features.cryptocurrency.presentation.shared_ui.loader.Loader
 
 @Composable
 fun CoinDetailsUi(
@@ -56,7 +53,7 @@ private fun CoinDetailsContent(
     details: CoinDetails,
     modifier: Modifier = Modifier
 ) {
-    Column (
+    Column(
         modifier = modifier
             .verticalScroll(rememberScrollState())
             .padding(20.dp)

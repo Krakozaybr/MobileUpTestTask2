@@ -57,7 +57,6 @@ fun CoinItemList(
             )
         }
     }
-
 }
 
 @Preview
@@ -83,4 +82,3 @@ private fun CoinItemListPreview() {
         }
     }
 }
-

@@ -68,7 +68,6 @@ fun Modifier.dropShadowOutOfBounds(
     spread: Dp = 0.dp
 ) = this.drawBehind {
     drawIntoCanvas {
-
         drawShadow(
             shape = shape,
             color = color,
@@ -77,6 +76,5 @@ fun Modifier.dropShadowOutOfBounds(
             offsetX = offsetX,
             spread = spread,
         )
-
     }
 }

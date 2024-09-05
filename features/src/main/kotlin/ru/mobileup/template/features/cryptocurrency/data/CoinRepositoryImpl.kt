@@ -47,5 +47,4 @@ class CoinRepositoryImpl(
         ) { id ->
             api.getDetails(id.value).map()
         }
-
 }

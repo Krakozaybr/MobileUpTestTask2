@@ -32,7 +32,6 @@ fun CryptocurrencyUi(
             is CoinList -> CoinListUi(component = instance.component)
         }
     }
-
 }
 
 @Preview

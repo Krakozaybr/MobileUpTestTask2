@@ -10,7 +10,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import ru.mobileup.template.core.theme.custom.CustomTheme
 import ru.mobileup.template.features.cryptocurrency.presentation.shared_ui.extensions.dropShadowOutOfBounds
 
 @Composable

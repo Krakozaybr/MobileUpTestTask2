@@ -27,9 +27,7 @@ class RealCoinDetailsComponent(
         )
     }
 
-
     override fun onRetryClick() {
         coinReplica.refresh()
     }
-
 }

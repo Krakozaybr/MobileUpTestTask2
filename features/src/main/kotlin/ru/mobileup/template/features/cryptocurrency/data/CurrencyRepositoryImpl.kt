@@ -3,7 +3,6 @@ package ru.mobileup.template.features.cryptocurrency.data
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toImmutableList
-import kotlinx.collections.immutable.toImmutableSet
 import me.aartikov.replica.client.ReplicaClient
 import me.aartikov.replica.single.Replica
 import me.aartikov.replica.single.ReplicaSettings

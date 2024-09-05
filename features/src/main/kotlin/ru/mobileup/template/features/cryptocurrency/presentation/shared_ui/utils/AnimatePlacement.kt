@@ -40,7 +40,6 @@ fun Modifier.animatePlacement(): Modifier = composed {
                     animatable = it
                 }
 
-
             if (anim.targetValue != targetOffset) {
                 scope.launch {
                     anim.animateTo(targetOffset, spring(stiffness = Spring.StiffnessMediumLow))

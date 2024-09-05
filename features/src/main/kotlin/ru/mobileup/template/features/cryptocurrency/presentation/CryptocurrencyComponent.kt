@@ -14,7 +14,5 @@ interface CryptocurrencyComponent {
         data class CoinList(val component: CoinListComponent) : Child
 
         data class CoinDetails(val component: CoinDetailsComponent) : Child
-
     }
-
 }

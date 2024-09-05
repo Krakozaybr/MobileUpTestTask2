@@ -2,12 +2,10 @@ package ru.mobileup.template.features.cryptocurrency.presentation
 
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.ExperimentalDecomposeApi
-import com.arkivanov.decompose.router.slot.SlotNavigation
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.pushNew
-import com.arkivanov.decompose.value.Value
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.serialization.Serializable
 import ru.mobileup.template.core.ComponentFactory
@@ -78,7 +76,5 @@ class RealCryptocurrencyComponent(
 
         @Serializable
         data class CoinDetails(val id: CoinId, val title: String) : Config
-
     }
-
 }

@@ -63,5 +63,4 @@ fun CurrencyChip(
             style = CustomTheme.typography.cryptocurrencyTypography.chip
         )
     }
-
 }

@@ -28,7 +28,7 @@ fun CoinDetailsToolbar(
     AppToolbar(
         modifier = modifier
     ) {
-        Row (
+        Row(
             modifier = Modifier.padding(paddingValues),
             horizontalArrangement = Arrangement.spacedBy(spacing),
             verticalAlignment = Alignment.CenterVertically

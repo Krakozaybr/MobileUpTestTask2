@@ -27,7 +27,6 @@ import ru.mobileup.template.features.cryptocurrency.presentation.list.ui.Currenc
 import ru.mobileup.template.features.cryptocurrency.presentation.list.ui.RefreshFailedMessage
 import ru.mobileup.template.features.cryptocurrency.presentation.shared_ui.lce.CryptoPullRefreshLce
 
-
 @Composable
 fun CoinListUi(
     component: CoinListComponent,
@@ -89,7 +88,6 @@ fun CoinListUi(
                 }
             },
         )
-
     }
 }
 
@@ -113,7 +111,6 @@ private fun ListContent(
             coinList = coins,
             modifier = Modifier.fillMaxSize()
         )
-
     }
 }
 

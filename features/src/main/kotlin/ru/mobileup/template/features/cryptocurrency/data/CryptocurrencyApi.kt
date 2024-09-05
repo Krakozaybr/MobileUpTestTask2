@@ -16,5 +16,4 @@ interface CryptocurrencyApi {
 
     @GET("coins/{id}")
     suspend fun getDetails(@Path("id") id: String): CoinDetailsResponse
-
 }

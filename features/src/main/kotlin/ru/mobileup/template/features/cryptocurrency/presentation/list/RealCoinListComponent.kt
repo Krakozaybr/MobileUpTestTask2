@@ -2,30 +2,19 @@ package ru.mobileup.template.features.cryptocurrency.presentation.list
 
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.childContext
-import kotlinx.collections.immutable.persistentListOf
-import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import me.aartikov.replica.algebra.normal.map
 import me.aartikov.replica.algebra.normal.withKey
 import ru.mobileup.template.core.ComponentFactory
 import ru.mobileup.template.core.createMessageComponent
 import ru.mobileup.template.core.error_handling.ErrorHandler
-import ru.mobileup.template.core.message.presentation.MessageComponent
-import ru.mobileup.template.core.message.presentation.RealMessageComponent
-import ru.mobileup.template.core.utils.LoadableState
 import ru.mobileup.template.core.utils.componentScope
 import ru.mobileup.template.core.utils.observe
 import ru.mobileup.template.features.cryptocurrency.data.CoinRepository
 import ru.mobileup.template.features.cryptocurrency.data.CurrencyRepository
-import ru.mobileup.template.features.cryptocurrency.domain.CoinId
 import ru.mobileup.template.features.cryptocurrency.domain.CoinInfo
 import ru.mobileup.template.features.cryptocurrency.domain.Currency
 
@@ -84,5 +73,4 @@ class RealCoinListComponent(
         currenciesReplica.refresh()
         coinReplica.refresh()
     }
-
 }

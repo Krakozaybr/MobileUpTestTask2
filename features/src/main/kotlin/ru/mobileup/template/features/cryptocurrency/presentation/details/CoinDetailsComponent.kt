@@ -14,5 +14,4 @@ interface CoinDetailsComponent {
         val details: LoadableState<CoinDetails>,
         val title: String
     )
-
 }
