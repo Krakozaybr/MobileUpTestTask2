@@ -3,6 +3,10 @@ package ru.mobileup.template.features.cryptocurrency.presentation.list.ui
 import android.util.Log
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.awaitVerticalDragOrCancellation
+import androidx.compose.foundation.gestures.rememberScrollableState
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -21,9 +25,12 @@ import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.input.pointer.PointerId
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import coil.size.OriginalSize
 import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.flow.collectLatest
 import me.aartikov.replica.paged.PagedLoadingStatus
@@ -60,7 +67,15 @@ fun CoinItemList(
     }
 
     LazyColumn(
-        modifier = modifier.graphicsLayer { alpha = listAlpha },
+        modifier = modifier
+            .graphicsLayer { alpha = listAlpha }
+            .scrollable(
+                orientation = Orientation.Vertical,
+                state = rememberScrollableState {
+                    0f
+                }
+            )
+        ,
         state = listState,
         contentPadding = contentPaddingValues,
         userScrollEnabled = userScrollEnabled,

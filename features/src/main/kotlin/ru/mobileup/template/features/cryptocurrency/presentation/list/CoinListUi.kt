@@ -82,10 +82,7 @@ fun CoinListUi(
                         coins = data,
                         loadingStatus = coinsState.loadingStatus,
                         onEndReached = {
-                            if (coinsState.error == null) {
-                                component.onLoadNext()
-                                Log.d("TAGLOLOLOLOL", "CoinListUi: Loadnext")
-                            }
+                            component.onLoadNext()
                         }
                     )
                     RefreshFailedMessage(
@@ -116,7 +113,6 @@ private fun ListContent(
             .clipToBounds()
             .nestedScroll(refreshState.nestedScrollConnection)
     ) {
-
         CoinItemList(
             onCoinClick = showDetails,
             coinList = coins,
