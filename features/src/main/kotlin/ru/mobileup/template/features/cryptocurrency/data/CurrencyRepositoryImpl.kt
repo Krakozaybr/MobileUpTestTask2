@@ -32,14 +32,12 @@ class CurrencyRepositoryImpl(
             val list = try {
                 api.supportedCurrencies().map {
                     Currency(it)
-                }.toMutableList()
+                }
             } catch (e: Exception) {
-                mutableListOf()
+                listOf()
             }
 
-            list.removeAll(defaults)
-
             // Defaults should be leading
-            return@createReplica (defaults + list).toImmutableList()
+            return@createReplica (defaults + list.filterNot { it in defaults }).toImmutableList()
         }
 }
