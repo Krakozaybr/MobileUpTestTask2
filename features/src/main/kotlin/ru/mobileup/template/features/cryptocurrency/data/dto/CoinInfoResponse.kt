@@ -8,18 +8,12 @@ import ru.mobileup.template.features.cryptocurrency.domain.Currency
 
 @Serializable
 data class CoinInfoResponse(
-    @SerialName("id")
-    val id: String,
-    @SerialName("price_change_percentage_24h")
-    val priceChangePercentage: Float,
-    @SerialName("name")
-    val name: String,
-    @SerialName("image")
-    val imageLink: String,
-    @SerialName("current_price")
-    val price: Float,
-    @SerialName("symbol")
-    val symbol: String,
+    @SerialName("id") val id: String,
+    @SerialName("price_change_percentage_24h") val priceChangePercentage: Float,
+    @SerialName("name") val name: String,
+    @SerialName("image") val imageLink: String,
+    @SerialName("current_price") val price: Float,
+    @SerialName("symbol") val symbol: String,
 ) {
     fun map(currency: Currency) = CoinInfo(
         id = CoinId(id),
