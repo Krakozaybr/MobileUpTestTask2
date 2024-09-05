@@ -1,5 +1,6 @@
 package ru.mobileup.template.features.cryptocurrency.presentation.list
 
+import android.util.Log
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -18,9 +19,10 @@ import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import kotlinx.collections.immutable.ImmutableList
+import me.aartikov.replica.paged.PagedLoadingStatus
 import ru.mobileup.template.core.theme.AppTheme
 import ru.mobileup.template.features.cryptocurrency.domain.CoinInfo
+import ru.mobileup.template.features.cryptocurrency.domain.CoinList
 import ru.mobileup.template.features.cryptocurrency.presentation.list.ui.CoinItemList
 import ru.mobileup.template.features.cryptocurrency.presentation.list.ui.CoinListToolbar
 import ru.mobileup.template.features.cryptocurrency.presentation.list.ui.CurrencyChipList
@@ -67,17 +69,24 @@ fun CoinListUi(
             }
         }
 
-        val coins by component.coins.collectAsState()
+        val coinsState by component.coins.collectAsState()
 
         CryptoPullRefreshLce(
-            state = coins,
+            state = coinsState,
             onRefresh = component::onRefresh,
             onRetryClick = component::onRetryClick,
             content = { data, _ ->
                 Box {
                     ListContent(
                         showDetails = component::onCoinClick,
-                        coins = data
+                        coins = data,
+                        loadingStatus = coinsState.loadingStatus,
+                        onEndReached = {
+                            if (coinsState.error == null) {
+                                component.onLoadNext()
+                                Log.d("TAGLOLOLOLOL", "CoinListUi: Loadnext")
+                            }
+                        }
                     )
                     RefreshFailedMessage(
                         component = component.messageComponent,
@@ -95,7 +104,9 @@ fun CoinListUi(
 @Composable
 private fun ListContent(
     showDetails: (CoinInfo) -> Unit,
-    coins: ImmutableList<CoinInfo>,
+    coins: CoinList,
+    loadingStatus: PagedLoadingStatus,
+    onEndReached: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val refreshState = rememberPullToRefreshState()
@@ -109,6 +120,8 @@ private fun ListContent(
         CoinItemList(
             onCoinClick = showDetails,
             coinList = coins,
+            showLoadingNext = loadingStatus == PagedLoadingStatus.LoadingNextPage,
+            onEndReached = onEndReached,
             modifier = Modifier.fillMaxSize()
         )
     }
