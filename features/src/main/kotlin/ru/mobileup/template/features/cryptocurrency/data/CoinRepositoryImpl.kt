@@ -9,6 +9,7 @@ import me.aartikov.replica.keyed_paged.KeyedPagedReplicaSettings
 import me.aartikov.replica.paged.PagedData
 import me.aartikov.replica.paged.PagedReplicaSettings
 import me.aartikov.replica.single.ReplicaSettings
+import ru.mobileup.template.features.cryptocurrency.data.dto.CoinDetailsResponse.Companion.toDomain
 import ru.mobileup.template.features.cryptocurrency.data.dto.CoinInfoResponse
 import ru.mobileup.template.features.cryptocurrency.domain.CoinDetails
 import ru.mobileup.template.features.cryptocurrency.domain.CoinId
@@ -86,6 +87,6 @@ class CoinRepositoryImpl(
                 )
             }
         ) { id ->
-            api.getDetails(id.value).map()
+            api.getDetails(id.value).toDomain()
         }
 }
