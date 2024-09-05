@@ -18,7 +18,7 @@ import ru.mobileup.template.features.cryptocurrency.presentation.list.CoinListCo
 class RealCryptocurrencyComponent(
     componentContext: ComponentContext,
     private val componentFactory: ComponentFactory
-) : CryptocurrencyComponent, ComponentContext by componentContext {
+) : ComponentContext by componentContext, CryptocurrencyComponent {
 
     private val navigation = StackNavigation<Config>()
 
