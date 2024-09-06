@@ -1,36 +1,36 @@
-<svg width="266px" height="116px"
- viewBox="0.00 0.00 266.22 116.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="152px" height="116px"
+ viewBox="0.00 0.00 152.24 116.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1.0 1.0) rotate(0.0) translate(4.0 112.0)">
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-112 262.22,-112 262.22,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-112 148.24,-112 148.24,4 -4,4"/>
 <!-- root -->
 <g id="node1" class="node">
 <title>root</title>
-<ellipse fill="none" stroke="black" cx="138.48" cy="-90" rx="27" ry="18"/>
-<text text-anchor="middle" x="138.48" y="-85.8" font-family="Times,serif" font-size="14.00">root</text>
+<ellipse fill="none" stroke="black" cx="76.24" cy="-90" rx="27" ry="18"/>
+<text text-anchor="middle" x="76.24" y="-85.8" font-family="Times,serif" font-size="14.00">root</text>
 </g>
-<!-- cryptocurrency -->
+<!-- details -->
 <g id="node2" class="node">
-<title>cryptocurrency</title>
-<ellipse fill="none" stroke="black" cx="69.48" cy="-18" rx="69.46" ry="18"/>
-<text text-anchor="middle" x="69.48" y="-13.8" font-family="Times,serif" font-size="14.00">cryptocurrency</text>
+<title>details</title>
+<ellipse fill="none" stroke="black" cx="36.24" cy="-18" rx="36.49" ry="18"/>
+<text text-anchor="middle" x="36.24" y="-13.8" font-family="Times,serif" font-size="14.00">details</text>
 </g>
-<!-- root&#45;&gt;cryptocurrency -->
+<!-- root&#45;&gt;details -->
 <g id="edge1" class="edge">
-<title>root&#45;&gt;cryptocurrency</title>
-<path fill="none" stroke="black" d="M124.19,-74.5C115.23,-65.41 103.47,-53.48 93.14,-43"/>
-<polygon fill="black" stroke="black" points="95.46,-40.36 85.94,-35.7 90.47,-45.28 95.46,-40.36"/>
+<title>root&#45;&gt;details</title>
+<path fill="none" stroke="black" d="M66.97,-72.76C62.19,-64.4 56.25,-54.02 50.88,-44.61"/>
+<polygon fill="black" stroke="black" points="53.75,-42.58 45.75,-35.63 47.67,-46.05 53.75,-42.58"/>
 </g>
-<!-- pokemons -->
+<!-- list -->
 <g id="node3" class="node">
-<title>pokemons</title>
-<ellipse fill="none" stroke="black" cx="207.48" cy="-18" rx="50.97" ry="18"/>
-<text text-anchor="middle" x="207.48" y="-13.8" font-family="Times,serif" font-size="14.00">pokemons</text>
+<title>list</title>
+<ellipse fill="none" stroke="black" cx="117.24" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="117.24" y="-13.8" font-family="Times,serif" font-size="14.00">list</text>
 </g>
-<!-- root&#45;&gt;pokemons -->
+<!-- root&#45;&gt;list -->
 <g id="edge2" class="edge">
-<title>root&#45;&gt;pokemons</title>
-<path fill="none" stroke="black" d="M152.78,-74.5C161.86,-65.28 173.83,-53.14 184.26,-42.56"/>
-<polygon fill="black" stroke="black" points="186.99,-44.78 191.52,-35.2 182,-39.86 186.99,-44.78"/>
+<title>root&#45;&gt;list</title>
+<path fill="none" stroke="black" d="M85.75,-72.76C90.77,-64.19 97.04,-53.49 102.66,-43.9"/>
+<polygon fill="black" stroke="black" points="105.75,-45.55 107.79,-35.15 99.71,-42.01 105.75,-45.55"/>
 </g>
 </g>
 </svg>

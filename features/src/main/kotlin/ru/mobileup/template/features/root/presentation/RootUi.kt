@@ -7,38 +7,30 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.extensions.compose.jetpack.stack.Children
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import ru.mobileup.template.core.message.presentation.MessageUi
 import ru.mobileup.template.core.theme.AppTheme
 import ru.mobileup.template.core.theme.custom.CustomTheme
 import ru.mobileup.template.core.utils.LocalSystemBarsSettings
 import ru.mobileup.template.core.utils.accumulate
-import ru.mobileup.template.features.cryptocurrency.presentation.CryptocurrencyUi
-import ru.mobileup.template.features.pokemons.presentation.PokemonsUi
+import ru.mobileup.template.features.details.presentation.ui.CoinDetailsUi
+import ru.mobileup.template.features.list.presentation.CoinListUi
 
 @Composable
 fun RootUi(
     component: RootComponent,
     modifier: Modifier = Modifier
 ) {
-    val childStack by component.childStack.collectAsState()
+    val childStack by component.stack.collectAsState()
 
     SystemBarsColors()
 
     Children(childStack, modifier) { child ->
         when (val instance = child.instance) {
-            is RootComponent.Child.Pokemons -> PokemonsUi(instance.component)
-            is RootComponent.Child.Cryptocurrency -> CryptocurrencyUi(instance.component)
+            is RootComponent.Child.CoinList -> CoinListUi(instance.component)
+            is RootComponent.Child.CoinDetails -> CoinDetailsUi(instance.component)
         }
     }
-
-    MessageUi(
-        component = component.messageComponent,
-        modifier = modifier,
-        bottomPadding = 16.dp
-    )
 }
 
 @Composable
