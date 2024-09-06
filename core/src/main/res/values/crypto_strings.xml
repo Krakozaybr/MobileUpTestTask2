@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error">Ошибка</string>
+    <string name="error_text">Произошла какая-то ошибка :(\nПопробуем снова?</string>
+    <string name="caps_try">ПОПРОБОВАТЬ</string>
+</resources>
