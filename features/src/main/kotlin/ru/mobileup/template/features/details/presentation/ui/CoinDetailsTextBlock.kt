@@ -17,7 +17,7 @@ fun CoinDetailsTextBlock(
     modifier: Modifier = Modifier,
     spacing: Dp = 12.dp
 ) {
-    Column (
+    Column(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(spacing)
     ) {

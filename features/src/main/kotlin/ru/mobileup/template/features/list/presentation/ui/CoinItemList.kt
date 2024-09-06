@@ -2,9 +2,6 @@ package ru.mobileup.template.features.list.presentation.ui
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.rememberScrollableState
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -16,10 +13,7 @@ import androidx.compose.foundation.lazy.LazyItemScope
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.rememberUpdatedState
-import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
@@ -27,9 +21,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import kotlinx.collections.immutable.toImmutableList
-import kotlinx.coroutines.flow.collectLatest
+import me.aartikov.replica.paged.PagedLoadingStatus
 import ru.mobileup.template.core.common_domain.cryptocurrency.CoinId
 import ru.mobileup.template.core.theme.AppTheme
+import ru.mobileup.template.core.utils.PagedState
+import ru.mobileup.template.core.utils.TriggerLoadNext
 import ru.mobileup.template.core.widget.Loader
 import ru.mobileup.template.features.list.domain.CoinInfo
 import ru.mobileup.template.features.list.domain.CoinList
@@ -39,8 +35,8 @@ import ru.mobileup.template.features.list.domain.Currency
 fun CoinItemList(
     onCoinClick: (CoinInfo) -> Unit,
     coinList: CoinList,
-    onEndReached: () -> Unit,
-    showLoadingNext: Boolean,
+    pagedState: PagedState<*>,
+    onLoadNext: () -> Unit,
     modifier: Modifier = Modifier,
     userScrollEnabled: Boolean = true,
     contentPaddingValues: PaddingValues = PaddingValues(vertical = 20.dp),
@@ -52,24 +48,16 @@ fun CoinItemList(
         label = "List alpha animation"
     )
     val listState = rememberLazyListState()
-    val onEndReachedState by rememberUpdatedState(onEndReached)
 
-    LaunchedEffect(listState) {
-        snapshotFlow { listState.canScrollForward }.collectLatest {
-            if (!it) onEndReachedState()
-        }
-    }
+    listState.TriggerLoadNext(
+        pagedState = pagedState,
+        hasNextPage = coinList.hasNextPage,
+        callback = onLoadNext
+    )
 
     LazyColumn(
         modifier = modifier
-            .graphicsLayer { alpha = listAlpha }
-            .scrollable(
-                orientation = Orientation.Vertical,
-                state = rememberScrollableState {
-                    0f
-                }
-            )
-        ,
+            .graphicsLayer { alpha = listAlpha },
         state = listState,
         contentPadding = contentPaddingValues,
         userScrollEnabled = userScrollEnabled,
@@ -87,7 +75,7 @@ fun CoinItemList(
             )
         }
 
-        if (showLoadingNext) {
+        if (pagedState.loadingStatus == PagedLoadingStatus.LoadingNextPage) {
             item {
                 ListLoader()
             }
@@ -132,8 +120,8 @@ private fun CoinItemListPreview() {
                         )
                     }.toImmutableList()
                 ),
-                showLoadingNext = false,
-                onEndReached = {}
+                onLoadNext = {},
+                pagedState = PagedState<Unit>(loadingStatus = PagedLoadingStatus.LoadingNextPage)
             )
         }
     }

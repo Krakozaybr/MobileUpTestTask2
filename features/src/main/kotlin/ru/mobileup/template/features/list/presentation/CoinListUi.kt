@@ -18,8 +18,8 @@ import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import me.aartikov.replica.paged.PagedLoadingStatus
 import ru.mobileup.template.core.theme.AppTheme
+import ru.mobileup.template.core.utils.PagedState
 import ru.mobileup.template.core.widget.lce.CryptoPullRefreshLce
 import ru.mobileup.template.features.list.domain.CoinInfo
 import ru.mobileup.template.features.list.domain.CoinList
@@ -79,10 +79,8 @@ fun CoinListUi(
                     ListContent(
                         showDetails = component::onCoinClick,
                         coins = data,
-                        loadingStatus = coinsState.loadingStatus,
-                        onEndReached = {
-                            component.onLoadNext()
-                        }
+                        pagedState = coinsState,
+                        onLoadNext = component::onLoadNext
                     )
                     RefreshFailedMessage(
                         component = component.messageComponent,
@@ -101,8 +99,8 @@ fun CoinListUi(
 private fun ListContent(
     showDetails: (CoinInfo) -> Unit,
     coins: CoinList,
-    loadingStatus: PagedLoadingStatus,
-    onEndReached: () -> Unit,
+    pagedState: PagedState<*>,
+    onLoadNext: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val refreshState = rememberPullToRefreshState()
@@ -115,8 +113,8 @@ private fun ListContent(
         CoinItemList(
             onCoinClick = showDetails,
             coinList = coins,
-            showLoadingNext = loadingStatus == PagedLoadingStatus.LoadingNextPage,
-            onEndReached = onEndReached,
+            pagedState = pagedState,
+            onLoadNext = onLoadNext,
             modifier = Modifier.fillMaxSize()
         )
     }

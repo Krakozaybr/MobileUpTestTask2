@@ -1,7 +1,7 @@
 digraph {
-cryptocurrency
-pokemons
+details
+list
 root
-root -> cryptocurrency
-root -> pokemons
+root -> details
+root -> list
 }
