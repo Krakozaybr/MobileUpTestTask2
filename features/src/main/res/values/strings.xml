@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="input_min_length_error">
+        <item quantity="one">Необходимо ввести хотя бы %d символ</item>
+        <item quantity="few">Необходимо ввести хотя бы %d символа</item>
+        <item quantity="many">Необходимо ввести хотя бы %d символов</item>
+        <item quantity="other">Необходимо ввести хотя бы %d символов</item>
+    </plurals>
+</resources>

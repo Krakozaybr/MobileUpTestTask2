@@ -26,6 +26,7 @@ import ru.mobileup.template.core.common_domain.cryptocurrency.CoinId
 import ru.mobileup.template.core.theme.AppTheme
 import ru.mobileup.template.core.utils.PagedState
 import ru.mobileup.template.core.utils.TriggerLoadNext
+import ru.mobileup.template.core.widget.CoinBlock
 import ru.mobileup.template.core.widget.Loader
 import ru.mobileup.template.features.list.domain.CoinInfo
 import ru.mobileup.template.features.list.domain.CoinList

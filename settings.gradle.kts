@@ -106,6 +106,10 @@ dependencyResolutionManagement {
             val immutableCollections = "0.3.7"
             library("immutable-collections", "org.jetbrains.kotlinx:kotlinx-collections-immutable:$immutableCollections")
 
+            // Form validations
+            val formValidator = "1.0.0"
+            library("form-validator", "ru.mobileup:kmm-form-validation:$formValidator")
+
             // DI
             val koinVersion = "3.5.0"
             library("koin", "io.insert-koin:koin-core:$koinVersion")

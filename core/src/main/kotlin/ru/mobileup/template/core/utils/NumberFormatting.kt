@@ -1,4 +1,4 @@
-package ru.mobileup.template.features.list.presentation.ui.utils
+package ru.mobileup.template.core.utils
 
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
