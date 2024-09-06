@@ -13,22 +13,22 @@ import ru.mobileup.template.core.theme.AppTheme
 import ru.mobileup.template.core.theme.custom.CustomTheme
 import ru.mobileup.template.core.utils.LocalSystemBarsSettings
 import ru.mobileup.template.core.utils.accumulate
-import ru.mobileup.template.features.cryptocurrency.presentation.CryptocurrencyUi
-import ru.mobileup.template.features.pokemons.presentation.PokemonsUi
+import ru.mobileup.template.features.details.presentation.ui.CoinDetailsUi
+import ru.mobileup.template.features.list.presentation.CoinListUi
 
 @Composable
 fun RootUi(
     component: RootComponent,
     modifier: Modifier = Modifier
 ) {
-    val childStack by component.childStack.collectAsState()
+    val childStack by component.stack.collectAsState()
 
     SystemBarsColors()
 
     Children(childStack, modifier) { child ->
         when (val instance = child.instance) {
-            is RootComponent.Child.Pokemons -> PokemonsUi(instance.component)
-            is RootComponent.Child.Cryptocurrency -> CryptocurrencyUi(instance.component)
+            is RootComponent.Child.CoinList -> CoinListUi(instance.component)
+            is RootComponent.Child.CoinDetails -> CoinDetailsUi(instance.component)
         }
     }
 }

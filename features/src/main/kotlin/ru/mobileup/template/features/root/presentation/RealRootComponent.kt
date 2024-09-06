@@ -1,53 +1,80 @@
 package ru.mobileup.template.features.root.presentation
 
 import com.arkivanov.decompose.ComponentContext
+import com.arkivanov.decompose.ExperimentalDecomposeApi
+import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
+import com.arkivanov.decompose.router.stack.pushNew
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.serialization.Serializable
 import ru.mobileup.template.core.ComponentFactory
+import ru.mobileup.template.core.common_domain.cryptocurrency.CoinId
 import ru.mobileup.template.core.utils.toStateFlow
-import ru.mobileup.template.features.cryptocurrency.createCryptocurrencyComponent
-import ru.mobileup.template.features.pokemons.createPokemonsComponent
+import ru.mobileup.template.features.details.createCoinDetailsComponent
+import ru.mobileup.template.features.list.createCoinListComponent
+import ru.mobileup.template.features.list.presentation.CoinListComponent
 
 class RealRootComponent(
     componentContext: ComponentContext,
     private val componentFactory: ComponentFactory
 ) : ComponentContext by componentContext, RootComponent {
 
-    private val navigation = StackNavigation<ChildConfig>()
+    private val navigation = StackNavigation<Config>()
 
-    override val childStack = childStack(
+    override val stack: StateFlow<ChildStack<*, RootComponent.Child>> = childStack(
         source = navigation,
-        initialConfiguration = ChildConfig.Cryptocurrency,
-        serializer = ChildConfig.serializer(),
+        initialConfiguration = Config.CoinList,
+        serializer = Config.serializer(),
         handleBackButton = true,
         childFactory = ::createChild
     ).toStateFlow(lifecycle)
 
     private fun createChild(
-        config: ChildConfig,
-        componentContext: ComponentContext
+        config: Config,
+        componentContext: ComponentContext,
     ): RootComponent.Child = when (config) {
-        ChildConfig.Pokemons -> {
-            RootComponent.Child.Pokemons(
-                componentFactory.createPokemonsComponent(componentContext)
+        is Config.CoinDetails -> {
+            RootComponent.Child.CoinDetails(
+                componentFactory.createCoinDetailsComponent(
+                    coinId = config.id,
+                    title = config.title,
+                    componentContext = componentContext,
+                )
             )
         }
 
-        ChildConfig.Cryptocurrency -> {
-            RootComponent.Child.Cryptocurrency(
-                componentFactory.createCryptocurrencyComponent(componentContext)
+        Config.CoinList -> {
+            RootComponent.Child.CoinList(
+                componentFactory.createCoinListComponent(
+                    componentContext = componentContext,
+                    onOutput = ::onCoinListOutput
+                )
             )
         }
     }
 
+    @OptIn(ExperimentalDecomposeApi::class)
+    private fun onCoinListOutput(output: CoinListComponent.Output) {
+        when (output) {
+            is CoinListComponent.Output.CoinDetailsRequested -> {
+                navigation.pushNew(
+                    Config.CoinDetails(
+                        id = output.coinInfo.id,
+                        title = output.coinInfo.name
+                    )
+                )
+            }
+        }
+    }
+
     @Serializable
-    sealed interface ChildConfig {
+    private sealed interface Config {
 
         @Serializable
-        data object Pokemons : ChildConfig
+        data object CoinList : Config
 
         @Serializable
-        data object Cryptocurrency : ChildConfig
+        data class CoinDetails(val id: CoinId, val title: String) : Config
     }
 }
