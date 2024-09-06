@@ -15,6 +15,7 @@ import ru.mobileup.template.core.theme.AppTheme
 import ru.mobileup.template.core.theme.custom.CustomTheme
 import ru.mobileup.template.core.utils.LocalSystemBarsSettings
 import ru.mobileup.template.core.utils.accumulate
+import ru.mobileup.template.features.cryptocurrency.presentation.CryptocurrencyUi
 import ru.mobileup.template.features.pokemons.presentation.PokemonsUi
 
 @Composable
@@ -29,6 +30,7 @@ fun RootUi(
     Children(childStack, modifier) { child ->
         when (val instance = child.instance) {
             is RootComponent.Child.Pokemons -> PokemonsUi(instance.component)
+            is RootComponent.Child.Cryptocurrency -> CryptocurrencyUi(instance.component)
         }
     }
 

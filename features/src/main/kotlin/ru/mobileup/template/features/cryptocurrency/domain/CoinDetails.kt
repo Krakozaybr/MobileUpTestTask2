@@ -5,6 +5,6 @@ import kotlinx.collections.immutable.ImmutableList
 data class CoinDetails(
     val id: CoinId,
     val imageLink: String,
-    val description: String,
+    val description: String?,
     val categories: ImmutableList<String>
 )

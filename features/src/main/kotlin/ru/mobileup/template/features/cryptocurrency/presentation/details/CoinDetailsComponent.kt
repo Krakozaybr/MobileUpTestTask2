@@ -6,8 +6,12 @@ import ru.mobileup.template.features.cryptocurrency.domain.CoinDetails
 
 interface CoinDetailsComponent {
 
-    val coinState: StateFlow<LoadableState<CoinDetails>>
+    val coinState: StateFlow<Model>
 
     fun onRetryClick()
 
+    data class Model(
+        val details: LoadableState<CoinDetails>,
+        val title: String
+    )
 }

@@ -98,6 +98,10 @@ dependencyResolutionManagement {
                 )
             )
 
+            // Html text
+            val htmlText = "2.0.0-beta01"
+            library("html-text", "de.charlex.compose.material3:material3-html-text:$htmlText")
+
             // Immutable collections
             val immutableCollections = "0.3.7"
             library("immutable-collections", "org.jetbrains.kotlinx:kotlinx-collections-immutable:$immutableCollections")

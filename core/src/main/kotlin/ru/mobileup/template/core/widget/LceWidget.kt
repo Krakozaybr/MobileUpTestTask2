@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import dev.icerock.moko.resources.compose.localized
+import dev.icerock.moko.resources.desc.StringDesc
 import ru.mobileup.template.core.utils.AbstractLoadableState
 
 /**
@@ -12,8 +13,10 @@ import ru.mobileup.template.core.utils.AbstractLoadableState
 @Composable
 fun <T : Any> LceWidget(
     state: AbstractLoadableState<T>,
-    onRetryClick: () -> Unit,
     modifier: Modifier = Modifier,
+    onRetryClick: (() -> Unit)? = null,
+    onError: (@Composable (StringDesc) -> Unit)? = null,
+    onLoading: (@Composable () -> Unit)? = null,
     content: @Composable (data: T, refreshing: Boolean) -> Unit
 ) {
     val loading = state.loading
@@ -24,11 +27,11 @@ fun <T : Any> LceWidget(
         when {
             data != null -> content(data, loading)
 
-            loading -> FullscreenCircularProgress()
+            loading -> onLoading?.invoke() ?: FullscreenCircularProgress()
 
-            error != null -> ErrorPlaceholder(
+            error != null -> onError?.invoke(error) ?: ErrorPlaceholder(
                 errorMessage = error.localized(),
-                onRetryClick = onRetryClick
+                onRetryClick = onRetryClick ?: {}
             )
         }
     }

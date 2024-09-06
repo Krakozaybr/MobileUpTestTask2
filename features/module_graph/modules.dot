@@ -1,5 +1,7 @@
 digraph {
+cryptocurrency
 pokemons
 root
+root -> cryptocurrency
 root -> pokemons
 }

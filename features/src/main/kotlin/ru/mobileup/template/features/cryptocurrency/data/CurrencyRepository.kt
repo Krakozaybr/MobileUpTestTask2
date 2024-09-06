@@ -7,5 +7,4 @@ import ru.mobileup.template.features.cryptocurrency.domain.Currency
 interface CurrencyRepository {
 
     val currenciesReplica: Replica<ImmutableList<Currency>>
-
 }
