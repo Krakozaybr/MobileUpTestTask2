@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -46,8 +47,8 @@ fun CoinItem(
             verticalArrangement = Arrangement.Center,
         ) {
             Row {
-                CoinName(name = coin.name, modifier = Modifier.fillMaxWidth(0.5f))
-                Spacer(modifier = Modifier.weight(1f))
+                CoinName(name = coin.name, modifier = Modifier.weight(1f))
+                Spacer(modifier = Modifier.width(16.dp))
                 CoinPrice(currency = coin.currency, price = coin.price)
             }
             Spacer(modifier = Modifier.height(6.dp))
