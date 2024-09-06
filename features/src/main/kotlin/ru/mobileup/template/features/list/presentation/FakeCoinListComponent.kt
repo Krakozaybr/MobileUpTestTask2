@@ -28,15 +28,7 @@ class FakeCoinListComponent : CoinListComponent {
             data = CoinList(
                 hasNextPage = false,
                 list = persistentListOf(
-                    CoinInfo(
-                        id = CoinId("btc"),
-                        imageLink = "",
-                        priceChangePercentage = 1f,
-                        name = "Bitcoin",
-                        price = 12f,
-                        symbol = "btc",
-                        currency = Currency("RUB")
-                    )
+                    CoinInfo.MOCK
                 ).toImmutableList()
             )
         )

@@ -13,14 +13,12 @@ import ru.mobileup.template.features.list.domain.CoinList
 import ru.mobileup.template.features.list.domain.Currency
 import kotlin.time.Duration.Companion.minutes
 
+private const val COIN_PAGE_SIZE = 30
+
 class CoinInfoRepositoryImpl(
     replicaClient: ReplicaClient,
     api: CoinInfoApi
 ) : CoinInfoRepository {
-    companion object {
-
-        private const val CoinPageSize = 30
-    }
 
     override val coinListReplica =
         replicaClient.createKeyedPagedReplica(
@@ -35,12 +33,11 @@ class CoinInfoRepositoryImpl(
                     val list = api.getList(
                         currency = key.name,
                         page = 1,
-                        pageSize = CoinPageSize
+                        pageSize = COIN_PAGE_SIZE
                     )
 
                     return SimplePage(
-                        hasNextPage = list.size == CoinPageSize,
-                        hasPreviousPage = false,
+                        hasNextPage = list.size == COIN_PAGE_SIZE,
                         items = list
                     )
                 }
@@ -53,12 +50,11 @@ class CoinInfoRepositoryImpl(
                     val list = api.getList(
                         currency = key.name,
                         page = page,
-                        pageSize = CoinPageSize
+                        pageSize = COIN_PAGE_SIZE
                     )
 
                     return SimplePage(
-                        hasNextPage = list.size == CoinPageSize,
-                        hasPreviousPage = page > 1,
+                        hasNextPage = list.size == COIN_PAGE_SIZE,
                         items = list
                     )
                 }
