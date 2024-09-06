@@ -40,7 +40,7 @@ fun CoinListUi(
         val selectedCurrency by component.selectedCurrency.collectAsState()
 
         CoinListToolbar(
-            modifier = Modifier
+            onSearchClick = component::onSearchClick
         ) {
             val currencyState by component.currencies.collectAsState()
 

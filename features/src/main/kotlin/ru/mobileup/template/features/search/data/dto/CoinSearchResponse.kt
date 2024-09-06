@@ -14,7 +14,7 @@ data class SearchResponse(
 data class CoinItemSearchResponse(
     @SerialName("id") val id: CoinId,
     @SerialName("name") val name: String,
-    @SerialName("thumb") val imageLink: String,
+    @SerialName("large") val imageLink: String,
     @SerialName("symbol") val symbol: String
 ) {
     companion object {

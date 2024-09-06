@@ -4,7 +4,6 @@ import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.flow.MutableStateFlow
 import me.aartikov.replica.paged.PagedLoadingStatus
-import ru.mobileup.template.core.common_domain.cryptocurrency.CoinId
 import ru.mobileup.template.core.message.presentation.FakeMessageComponent
 import ru.mobileup.template.core.utils.LoadableState
 import ru.mobileup.template.core.utils.PagedState
@@ -33,8 +32,11 @@ class FakeCoinListComponent : CoinListComponent {
             )
         )
     )
+
     override val selectedCurrency = MutableStateFlow(Currency("RUB"))
     override val messageComponent = FakeMessageComponent()
+
+    override fun onSearchClick() = Unit
 
     override fun onLoadNext() = Unit
 

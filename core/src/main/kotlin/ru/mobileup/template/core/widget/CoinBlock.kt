@@ -1,5 +1,6 @@
 package ru.mobileup.template.core.widget
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -30,6 +31,7 @@ fun CoinBlock(
     imageLink: String,
     name: String,
     symbol: String,
+    placeholder: Int,
     modifier: Modifier = Modifier,
     currencySymbol: String? = null,
     price: Float? = null,
@@ -43,7 +45,8 @@ fun CoinBlock(
         CoinImage(
             imageLink = imageLink,
             contentDescription = name,
-            modifier = Modifier.fillMaxHeight()
+            modifier = Modifier.fillMaxHeight(),
+            placeholder = placeholder
         )
         Column(
             verticalArrangement = Arrangement.Center,
@@ -142,7 +145,9 @@ private fun CoinPriceChange(
 private fun CoinImage(
     imageLink: String,
     contentDescription: String?,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    @DrawableRes
+    placeholder: Int,
 ) {
     AsyncImage(
         modifier = modifier
@@ -151,7 +156,7 @@ private fun CoinImage(
         model = ImageRequest.Builder(LocalContext.current)
             .data(imageLink)
             .crossfade(true)
-            .placeholder(R.drawable.placeholder)
+            .placeholder(placeholder)
             .build(),
         contentDescription = contentDescription
     )

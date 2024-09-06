@@ -13,6 +13,8 @@ interface SearchComponent {
 
     fun onCoinInfoClick(coinInfo: SearchCoinInfo)
 
+    fun onRetryClick()
+
     sealed interface Output {
         data class CoinDetailsRequested(val coinInfo: SearchCoinInfo) : Output
     }

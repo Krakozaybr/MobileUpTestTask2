@@ -6,4 +6,6 @@
         <item quantity="many">Необходимо ввести хотя бы %d символов</item>
         <item quantity="other">Необходимо ввести хотя бы %d символов</item>
     </plurals>
+    <string name="search">Поиск</string>
+    <string name="must_consists_from_letters">Запрос должен содержать только английские буквы</string>
 </resources>
