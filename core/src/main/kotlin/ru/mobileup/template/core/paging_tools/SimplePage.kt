@@ -1,4 +1,4 @@
-package ru.mobileup.template.features.list.data.coin_info
+package ru.mobileup.template.core.paging_tools
 
 import me.aartikov.replica.paged.Page
 

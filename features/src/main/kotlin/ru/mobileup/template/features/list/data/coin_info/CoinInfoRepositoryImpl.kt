@@ -7,6 +7,7 @@ import me.aartikov.replica.keyed_paged.KeyedPagedFetcher
 import me.aartikov.replica.keyed_paged.KeyedPagedReplicaSettings
 import me.aartikov.replica.paged.PagedData
 import me.aartikov.replica.paged.PagedReplicaSettings
+import ru.mobileup.template.core.paging_tools.SimplePage
 import ru.mobileup.template.features.list.data.dto.CoinInfoResponse
 import ru.mobileup.template.features.list.domain.CoinList
 import ru.mobileup.template.features.list.domain.Currency

@@ -27,7 +27,7 @@ fun CoinDetailsTextBlock(
 }
 
 @Composable
-fun CoinDetailsSubtitle(
+private fun CoinDetailsSubtitle(
     title: String,
     modifier: Modifier = Modifier
 ) {
@@ -39,7 +39,7 @@ fun CoinDetailsSubtitle(
 }
 
 @Composable
-fun CoinDetailsText(
+private fun CoinDetailsText(
     text: String,
     modifier: Modifier = Modifier
 ) {
