@@ -14,6 +14,8 @@ import ru.mobileup.template.core.utils.toStateFlow
 import ru.mobileup.template.features.details.createCoinDetailsComponent
 import ru.mobileup.template.features.list.createCoinListComponent
 import ru.mobileup.template.features.list.presentation.CoinListComponent
+import ru.mobileup.template.features.search.createSearchComponent
+import ru.mobileup.template.features.search.presentation.SearchComponent
 
 class RealRootComponent(
     componentContext: ComponentContext,
@@ -52,6 +54,29 @@ class RealRootComponent(
                 )
             )
         }
+
+        Config.Search -> {
+            RootComponent.Child.Search(
+                componentFactory.createSearchComponent(
+                    componentContext = componentContext,
+                    onOutput = ::onSearchOutput
+                )
+            )
+        }
+    }
+
+    @OptIn(ExperimentalDecomposeApi::class)
+    private fun onSearchOutput(output: SearchComponent.Output) {
+        when (output) {
+            is SearchComponent.Output.CoinDetailsRequested -> {
+                navigation.pushNew(
+                    Config.CoinDetails(
+                        id = output.coinInfo.id,
+                        title = output.coinInfo.name
+                    )
+                )
+            }
+        }
     }
 
     @OptIn(ExperimentalDecomposeApi::class)
@@ -65,6 +90,12 @@ class RealRootComponent(
                     )
                 )
             }
+
+            CoinListComponent.Output.SearchRequested -> {
+                navigation.pushNew(
+                    Config.Search
+                )
+            }
         }
     }
 
@@ -76,5 +107,8 @@ class RealRootComponent(
 
         @Serializable
         data class CoinDetails(val id: CoinId, val title: String) : Config
+
+        @Serializable
+        data object Search : Config
     }
 }

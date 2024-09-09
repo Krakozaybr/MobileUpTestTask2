@@ -4,6 +4,7 @@ import com.arkivanov.decompose.router.stack.ChildStack
 import kotlinx.coroutines.flow.StateFlow
 import ru.mobileup.template.features.details.presentation.CoinDetailsComponent
 import ru.mobileup.template.features.list.presentation.CoinListComponent
+import ru.mobileup.template.features.search.presentation.SearchComponent
 
 /**
  * A root of a Decompose component tree.
@@ -19,5 +20,7 @@ interface RootComponent {
         data class CoinList(val component: CoinListComponent) : Child
 
         data class CoinDetails(val component: CoinDetailsComponent) : Child
+
+        data class Search(val component: SearchComponent) : Child
     }
 }

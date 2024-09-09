@@ -1,6 +1,5 @@
 package ru.mobileup.template.features.list.presentation.ui
 
-import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -13,23 +12,19 @@ import androidx.compose.foundation.lazy.LazyItemScope
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import kotlinx.collections.immutable.toImmutableList
 import me.aartikov.replica.paged.PagedLoadingStatus
-import ru.mobileup.template.core.common_domain.cryptocurrency.CoinId
 import ru.mobileup.template.core.theme.AppTheme
 import ru.mobileup.template.core.utils.PagedState
 import ru.mobileup.template.core.utils.TriggerLoadNext
 import ru.mobileup.template.core.widget.Loader
 import ru.mobileup.template.features.list.domain.CoinInfo
 import ru.mobileup.template.features.list.domain.CoinList
-import ru.mobileup.template.features.list.domain.Currency
 
 @Composable
 fun CoinItemList(
@@ -42,11 +37,6 @@ fun CoinItemList(
     contentPaddingValues: PaddingValues = PaddingValues(vertical = 20.dp),
     spacing: Dp = 0.dp
 ) {
-
-    val listAlpha by animateFloatAsState(
-        targetValue = if (!userScrollEnabled) 0.7f else 1f,
-        label = "List alpha animation"
-    )
     val listState = rememberLazyListState()
 
     listState.TriggerLoadNext(
@@ -56,8 +46,7 @@ fun CoinItemList(
     )
 
     LazyColumn(
-        modifier = modifier
-            .graphicsLayer { alpha = listAlpha },
+        modifier = modifier,
         state = listState,
         contentPadding = contentPaddingValues,
         userScrollEnabled = userScrollEnabled,

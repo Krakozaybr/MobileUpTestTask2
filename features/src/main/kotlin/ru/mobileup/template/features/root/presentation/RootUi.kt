@@ -8,6 +8,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.arkivanov.decompose.extensions.compose.jetpack.stack.Children
+import com.arkivanov.decompose.extensions.compose.jetpack.stack.animation.slide
+import com.arkivanov.decompose.extensions.compose.jetpack.stack.animation.stackAnimation
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import ru.mobileup.template.core.theme.AppTheme
 import ru.mobileup.template.core.theme.custom.CustomTheme
@@ -15,6 +17,7 @@ import ru.mobileup.template.core.utils.LocalSystemBarsSettings
 import ru.mobileup.template.core.utils.accumulate
 import ru.mobileup.template.features.details.presentation.ui.CoinDetailsUi
 import ru.mobileup.template.features.list.presentation.CoinListUi
+import ru.mobileup.template.features.search.presentation.ui.SearchUi
 
 @Composable
 fun RootUi(
@@ -25,10 +28,15 @@ fun RootUi(
 
     SystemBarsColors()
 
-    Children(childStack, modifier) { child ->
+    Children(
+        stack = childStack,
+        modifier = modifier,
+        animation = stackAnimation(slide())
+    ) { child ->
         when (val instance = child.instance) {
             is RootComponent.Child.CoinList -> CoinListUi(instance.component)
             is RootComponent.Child.CoinDetails -> CoinDetailsUi(instance.component)
+            is RootComponent.Child.Search -> SearchUi(instance.component)
         }
     }
 }

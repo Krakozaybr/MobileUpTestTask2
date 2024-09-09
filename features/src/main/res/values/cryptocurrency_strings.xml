@@ -2,8 +2,6 @@
 <resources>
     <string name="coin_list">Список криптовалют</string>
     <string name="go_back">Назад</string>
-    <string name="price_change_up">+ %s%%</string>
-    <string name="price_change_down">- %s%%</string>
     <string name="snackbar_error_text">Произошла ошибка при загрузке</string>
     <string name="description">Описание</string>
     <string name="categories">Категории</string>

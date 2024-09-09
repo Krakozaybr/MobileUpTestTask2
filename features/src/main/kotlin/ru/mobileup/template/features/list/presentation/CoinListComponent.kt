@@ -20,6 +20,8 @@ interface CoinListComponent {
 
     fun onCurrencyClick(currency: Currency)
 
+    fun onSearchClick()
+
     fun onRetryClick()
 
     fun onRefresh()
@@ -28,5 +30,6 @@ interface CoinListComponent {
 
     sealed interface Output {
         data class CoinDetailsRequested(val coinInfo: CoinInfo) : Output
+        data object SearchRequested : Output
     }
 }

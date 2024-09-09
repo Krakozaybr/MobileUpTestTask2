@@ -77,4 +77,8 @@ class RealCoinListComponent(
     override fun onLoadNext() {
         coinReplica.loadNext()
     }
+
+    override fun onSearchClick() {
+        onOutput(CoinListComponent.Output.SearchRequested)
+    }
 }

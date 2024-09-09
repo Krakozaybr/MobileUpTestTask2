@@ -59,6 +59,12 @@ dependencies {
     // DI
     implementation(libs.koin)
 
+    // Coil
+    implementation(libs.coil)
+
+    // Form validation
+    implementation(libs.form.validator)
+
     // Logging
     implementation(libs.logger.kermit)
 
