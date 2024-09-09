@@ -60,7 +60,7 @@ class RealSearchComponent(
                 errorMessage = StringDesc.PluralFormatted(
                     pluralsRes = PluralsResource(R.plurals.input_min_length_error),
                     number = MINIMAL_INPUT_SIZE,
-                    args = arrayOf(MAXIMUM_INPUT_SIZE)
+                    args = arrayOf(MINIMAL_INPUT_SIZE)
                 )
             )
             regex(
